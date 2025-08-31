@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --jarvis-primary: #00d4ff;
+  --jarvis-secondary: #0099cc;
+  --jarvis-accent: #66e0ff;
+  --jarvis-glow: #00ffff;
+  --jarvis-dark: #0a0a0a;
+  --jarvis-darker: #050505;
+  --jarvis-panel: rgba(0, 20, 40, 0.8);
+  --jarvis-glass: rgba(0, 212, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--jarvis-darker) 0%, var(--jarvis-dark) 100%);
+  color: var(--jarvis-primary);
+  min-height: 100vh;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Jarvis-specific animations and effects */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--jarvis-primary), 0 0 40px var(--jarvis-primary), 0 0 60px var(--jarvis-primary);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--jarvis-glow), 0 0 60px var(--jarvis-glow), 0 0 90px var(--jarvis-glow);
+  }
+}
+
+@keyframes arc-reactor-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes voice-wave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing-dots {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Utility classes for Jarvis theme */
+.jarvis-glow {
+  box-shadow: 0 0 20px var(--jarvis-primary);
+}
+
+.jarvis-glow-strong {
+  box-shadow: 0 0 30px var(--jarvis-glow), 0 0 60px var(--jarvis-glow);
+}
+
+.jarvis-glass {
+  background: var(--jarvis-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.jarvis-panel {
+  background: var(--jarvis-panel);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.arc-reactor {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.arc-reactor-active {
+  animation: pulse-glow 1s ease-in-out infinite, arc-reactor-spin 10s linear infinite;
+}
+
+.voice-wave {
+  animation: voice-wave 0.5s ease-in-out infinite;
+}
+
+.slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in;
+}
+
+.typing-indicator {
+  animation: typing-dots 1.5s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--jarvis-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--jarvis-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--jarvis-glow);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .jarvis-glow {
+    box-shadow: 0 0 15px var(--jarvis-primary);
+  }
+  
+  .jarvis-glow-strong {
+    box-shadow: 0 0 20px var(--jarvis-glow), 0 0 40px var(--jarvis-glow);
+  }
+}
+
+/* Touch feedback */
+.touch-feedback:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(45deg, var(--jarvis-primary), var(--jarvis-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Holographic effect */
+.holographic {
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(0, 212, 255, 0.1) 50%, 
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: holographic-sweep 3s ease-in-out infinite;
+}
+
+@keyframes holographic-sweep {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
